@@ -1,6 +1,6 @@
 {
   "name": "get-component",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "CLI for creating new React components",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "license": "MIT",
@@ -39,8 +39,8 @@
     "templates"
   ],
   "scripts": {
-    "prepublishOnly": "buildkarium",
-    "build": "buildkarium"
+    "prepublishOnly": "nyxr build",
+    "build": "buildkarium && node ./scripts/copyTemplate.mjs"
   },
   "dependencies": {
     "@nyxb/colors": "^0.0.3",
