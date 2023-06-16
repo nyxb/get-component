@@ -1,6 +1,6 @@
 {
   "name": "get-component",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI for creating new React components",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "license": "MIT",
@@ -32,7 +32,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "getc": "./dist/index.mjs"
+    "getc": "./dist/index.cjs"
   },
   "files": [
     "dist",
