@@ -4,7 +4,6 @@ import * as fs from 'fs-extra'
 import { program } from 'commander'
 import { version } from '../package.json'
 import {
-   createParentDirectoryIfNecessary,
    getConfig,
    logConclusion,
    logError,
@@ -17,8 +16,6 @@ import {
    writeFilePromise,
 } from './utils'
 
-// Load our package.json, so that we can pass the version onto `commander`.
-
 // Get the default config for this component (looks for local/global overrides,
 // falls back to sensible defaults).
 const config = getConfig()
@@ -28,8 +25,18 @@ program
    .arguments('<componentName>')
    .option(
       '-d, --dir <pathToDirectory>',
-      'Path to the "components" directory (default: "src/components")',
+      'Path to the "components" directory (default: "app/components")',
       config.dir,
+   )
+   .option(
+      '--newdir',
+      'Create new directory for the component',
+      false, // default is false
+   )
+   .option(
+      '--style',
+      'Use a different template for the component',
+      false, // default is false
    )
    .parse(process.argv)
 
@@ -37,15 +44,14 @@ const [componentName] = program.args
 
 const options = program.opts()
 
-// Find the path to the selected template file.
-const templatePath = './templates/ts.js'
+const templatePath = options.style ? './templates/style.ts.js' : './templates/ts.js'
 
-// Get all of our file paths worked out, for the user's project.
-const componentDir = `${options.dir}/${componentName}`
+// Define component directory and file paths
+const componentDir = options.newdir ? path.resolve(`${options.dir}/${componentName}`) : path.resolve(options.dir)
 const filePath = `${componentDir}/${componentName}.tsx`
 const indexPath = `${componentDir}/index.ts`
 
-// Our index template is super straightforward, so we'll just inline it for now.
+// Define index template
 const indexTemplate = `\
 export * from './${componentName}';
 export { default } from './${componentName}';
@@ -55,6 +61,8 @@ logIntro({
    name: componentName,
    dir: componentDir,
    lang: 'ts',
+   isNewDir: options.newdir,
+   isStyle: options.style,
 })
 
 // Check if componentName is provided
@@ -67,24 +75,30 @@ if (!componentName) {
 
 // Check to see if the parent directory exists.
 // Create it if not
-createParentDirectoryIfNecessary(options.dir)
-
-// Check to see if this component has already been created
-const fullPathToComponentDir = path.resolve(componentDir)
-if (fs.existsSync(fullPathToComponentDir)) {
+if (!fs.existsSync(options.dir)) {
    logError(
-    `Looks like this component already exists! There's already a component at ${componentDir}.\nPlease delete this directory and try again.`,
+    `The directory ${options.dir} does not exist! Please ensure the path is correct.`,
    )
    process.exit(0)
 }
 
-// Start by creating the directory that our component lives in.
-mkDirPromise(componentDir)
-   .then(() => readFilePromiseRelative(templatePath))
-   .then((template) => {
-      logItemCompletion('Directory created.')
-      return template
+// Check to see if this component has already been created
+if (fs.existsSync(filePath)) {
+   logError(
+    `Looks like this component already exists! There's already a component named ${componentName} in the directory ${options.dir}.`,
+   )
+   process.exit(0)
+}
+
+// Create a new directory for the component if newdir option is set.
+if (options.newdir) {
+   mkDirPromise(componentDir).catch((err) => {
+      console.error(err)
+      process.exit(0)
    })
+}
+
+readFilePromiseRelative(templatePath)
    .then(template =>
    // Replace our placeholders with real data (so far, just the component name)
       template.replace(/COMPONENT_NAME/g, componentName),
@@ -97,12 +111,18 @@ mkDirPromise(componentDir)
       logItemCompletion('Component built and saved to disk.')
       return template
    })
-   .then(template =>
-   // We also need the `index.ts` file, which allows easy importing.
-      writeFilePromise(indexPath, indexTemplate),
-   )
    .then((template) => {
-      logItemCompletion('Index file built and saved to disk.')
+      // We also need the `index.ts` file, which allows easy importing.
+      // Only if newdir option is set.
+      if (options.newdir)
+         return writeFilePromise(indexPath, indexTemplate)
+
+      return template
+   })
+   .then((template) => {
+      if (options.newdir)
+         logItemCompletion('Index file built and saved to disk.')
+
       return template
    })
    .then((template) => {

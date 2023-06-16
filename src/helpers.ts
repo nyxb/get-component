@@ -44,23 +44,31 @@ export async function createParentDirectoryIfNecessary(dir: string) {
       fs.mkdirSync(dir)
 }
 
-// Emit a message confirming the creation of the component
-
-const langNames = {
-   ts: 'TypeScript',
+export function logTemplateChoice(isStyle: boolean) {
+   const templateString = isStyle ? 'style' : 'normal'
+   consolji.info(`Version:   ${templateString}`)
 }
 
-export function logIntro({ name, dir }: ComponentInfo) {
+// Emit a message confirming the creation of the component
+
+export function logIntro({ name, dir, isNewDir, isStyle }: ComponentInfo & { isNewDir: boolean; isStyle: boolean }) {
    consolji.info(
    `✨  Creating the ${nc.nyxbfox(
      name,
    )}  component ✨`,
    )
 
-   const pathString = nc.bold(nc.nyxbblue(dir))
+   const templateString = isStyle
+      ? 'with style-components'
+      : 'normal'
+
    const langString = nc.bold(nc.nyxbblue('TypeScript'))
 
-   consolji.info(`Directory:  ${pathString}`)
+   if (isNewDir) {
+      const pathString = nc.bold(nc.nyxbblue(dir))
+      consolji.info(`Directory:  ${pathString}`)
+   }
+   consolji.info(`Version:   ${templateString}`)
    consolji.info(`Language:   ${langString}`)
    consolji.info(
       nc.gray(
