@@ -23,15 +23,15 @@ export function getConfig(): Config {
 
    const defaults: Config = {
       lang: 'ts',
-      dir: 'apps/components',
+      dir: 'app/components',
    }
 
    const globalOverrides = requireOptional(
-    `/${home}/.new-component-config.json`,
+    `/${home}/.getc-config.json`,
    )
 
    const localOverrides = requireOptional(
-    `/${currentPath}/.new-component-config.json`,
+    `/${currentPath}/.getc-config.json`,
    )
 
    return Object.assign({}, defaults, globalOverrides, localOverrides)

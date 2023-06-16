@@ -60,7 +60,7 @@ logIntro({
 // Check if componentName is provided
 if (!componentName) {
    logError(
-      'Sorry, you need to specify a name for your component like this: new-component <name>',
+      'Sorry, you need to specify a name for your component like this: get-component <name>',
    )
    process.exit(0)
 }
