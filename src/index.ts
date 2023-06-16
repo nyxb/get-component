@@ -2,6 +2,7 @@
 import * as path from 'node:path'
 import * as fs from 'fs-extra'
 import { program } from 'commander'
+import { version } from '../package.json'
 import {
    createParentDirectoryIfNecessary,
    getConfig,
@@ -17,7 +18,6 @@ import {
 } from './utils'
 
 // Load our package.json, so that we can pass the version onto `commander`.
-const { version } = require('../package.json')
 
 // Get the default config for this component (looks for local/global overrides,
 // falls back to sensible defaults).
