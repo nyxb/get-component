@@ -38,7 +38,7 @@ const [componentName] = program.args
 const options = program.opts()
 
 // Find the path to the selected template file.
-const templatePath = './templates/ts.ts'
+const templatePath = './templates/ts.js'
 
 // Get all of our file paths worked out, for the user's project.
 const componentDir = `${options.dir}/${componentName}`
