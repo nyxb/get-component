@@ -22,6 +22,7 @@ This project uses an opinionated file structure discussed in this blog post: [**
 <br />
 
 ## Video demo
+https://github.com/nyxb/get-component/assets/98586665/bbaee7e3-846c-4210-af65-fd4bea1a11bc
 
 
 
