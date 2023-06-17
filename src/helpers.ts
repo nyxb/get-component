@@ -50,10 +50,10 @@ export async function createParentDirectoryIfNecessary(dir: string) {
       fs.mkdirSync(dir)
 }
 
-export function logTemplateChoice(isStyle: boolean) {
-   const templateString = isStyle ? 'style' : 'normal'
-   consolji.info(`Version:   ${templateString}`)
-}
+// export function logTemplateChoice(isStyle: boolean) {
+//    const templateString = isStyle ? 'style' : 'normal'
+//    consolji.info(`Version:   ${templateString}`)
+// }
 
 // Emit a message confirming the creation of the component
 
@@ -63,17 +63,17 @@ export function logIntro({ name, dir, isStyle }: ComponentInfo & { isStyle: bool
    console.log('\n')
 
    const templateString = isStyle
-      ? nc.bold(nc.nyxbfox('with style-components'))
-      : nc.bold(nc.nyxbfox('normal'))
+      ? nc.nyxbfox('with style-components')
+      : nc.nyxbfox('normal')
 
-   const langString = nc.bold(nc.nyxbfox('TypeScript'))
+   const langString = nc.nyxbfox('TypeScript')
 
    const pathString = nc.bold(nc.nyxbfox(dir))
    const directory = nyxbGradient('Directory:')
-   const version = nyxbGradient('Version:')
+   const template = nyxbGradient('Template:')
    const language = nyxbGradient('Language:')
    consolji.log(`${directory}  ${pathString}`)
-   consolji.log(`${version}    ${templateString}`)
+   consolji.log(`${template}    ${templateString}`)
    consolji.log(`${language}   ${langString}`)
    consolji.log(
       nyxbGradient(
