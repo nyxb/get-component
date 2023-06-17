@@ -17,6 +17,8 @@ This project is a CLI tool that allows you to quickly scaffold new components. A
 
 This project uses an opinionated file structure discussed in this blog post: [**Delightful React File/Directory Structure**](https://www.blog.nyxb.zip/react/file-structure/).
 
+**Note:** This project is designed to work with Next.js, but it should work with any React project. This Projekt use NerdFonts for the icons in the terminal. If you don't have them installed, you can find them here: [**NerdFonts**](https://www.nerdfonts.com/).
+
 <br />
 
 ## 🌟 Features
