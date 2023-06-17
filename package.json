@@ -1,6 +1,6 @@
 {
   "name": "get-component",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "CLI for creating new React components",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "license": "MIT",

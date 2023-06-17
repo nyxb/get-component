@@ -24,17 +24,22 @@ program
    .version(version)
    .arguments('<componentName>')
    .option(
+      '-p, --path <relativePath>',
+      'Relative path to the directory starting from the configured point',
+      relativePath => path.join(config.dir, relativePath),
+   )
+   .option(
       '-d, --dir <pathToDirectory>',
       'Path to the "components" directory (default: "app/components")',
       config.dir,
    )
    .option(
-      '--newdir',
+      '-n, --newdir',
       'Create new directory for the component',
       false, // default is false
    )
    .option(
-      '--style',
+      '-s, --style',
       'Use a different template for the component',
       false, // default is false
    )
@@ -47,7 +52,7 @@ const options = program.opts()
 const templatePath = options.style ? './templates/style.ts.js' : './templates/ts.js'
 
 // Define component directory and file paths
-const componentDir = options.newdir ? path.resolve(`${options.dir}/${componentName}`) : path.resolve(options.dir)
+const componentDir = options.newdir ? path.resolve(`${options.dir || options.path}/${componentName}`) : path.resolve(options.dir || options.path)
 const filePath = `${componentDir}/${componentName}.tsx`
 const indexPath = `${componentDir}/index.ts`
 
