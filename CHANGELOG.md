@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.1.3
+
+[compare changes](https://github.com/nyxb/get-component/compare/v0.1.2...v0.1.3)
+
+
+### 💅 Refactors
+
+  - **helpers.ts): remove commented out code for logTemplateChoice function 🐛 fix(helpers.ts:** Fix template string spacing in logIntro function to improve readability ([ca1e9fe](https://github.com/nyxb/get-component/commit/ca1e9fe))
+
+### ❤️  Contributors
+
+- Nyxb <contact@nyxb.xyz>
+
 ## v0.1.2
 
 [compare changes](https://github.com/nyxb/get-component/compare/v0.1.1...v0.1.2)
