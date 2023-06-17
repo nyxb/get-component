@@ -49,6 +49,8 @@ const [componentName] = program.args
 
 const options = program.opts()
 
+const targetDir = options.path || options.dir
+
 const templatePath = options.style ? './templates/style.ts.js' : './templates/ts.js'
 
 // Define component directory and file paths
@@ -80,9 +82,9 @@ if (!componentName) {
 
 // Check to see if the parent directory exists.
 // Create it if not
-if (!fs.existsSync(options.dir)) {
+if (!fs.existsSync(targetDir)) {
    logError(
-    `The directory ${options.dir} does not exist! Please ensure the path is correct.`,
+    `The directory ${targetDir} does not exist! Please ensure the path is correct.`,
    )
    process.exit(0)
 }
@@ -90,7 +92,7 @@ if (!fs.existsSync(options.dir)) {
 // Check to see if this component has already been created
 if (fs.existsSync(filePath)) {
    logError(
-    `Looks like this component already exists! There's already a component named ${componentName} in the directory ${options.dir}.`,
+    `Looks like this component already exists! There's already a component named ${componentName} in the directory ${targetDir}.`,
    )
    process.exit(0)
 }
