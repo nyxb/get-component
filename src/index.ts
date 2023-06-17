@@ -99,6 +99,7 @@ if (fs.existsSync(filePath)) {
 // Create a new directory for the component if newdir option is set.
 if (options.newdir) {
    mkDirPromise(componentDir).catch((err) => {
+      logItemCompletion('Directory created.')
       console.error(err)
       process.exit(0)
    })

@@ -59,7 +59,7 @@ export function logTemplateChoice(isStyle: boolean) {
 
 export function logIntro({ name, dir, isStyle }: ComponentInfo & { isStyle: boolean }) {
    console.log('\n')
-   consolji.log(`${nc.nyxbcyan('')} Creating the ${nc.nyxbfox(name)} component ${nc.nyxbcyan('')}`)
+   consolji.log(`${nc.nyxbcyan('')} ${nc.nyxbyellow('Creating the')} ${nc.nyxbfox(name)} ${nc.nyxbyellow('component')} ${nc.nyxbcyan('')}`)
    console.log('\n')
 
    const templateString = isStyle
@@ -76,7 +76,7 @@ export function logIntro({ name, dir, isStyle }: ComponentInfo & { isStyle: bool
    consolji.log(`${version}    ${templateString}`)
    consolji.log(`${language}   ${langString}`)
    consolji.log(
-      nc.gray(
+      nyxbGradient(
          '=========================================',
       ),
    )
@@ -85,10 +85,11 @@ export function logIntro({ name, dir, isStyle }: ComponentInfo & { isStyle: bool
 
 export function logItemCompletion(successText: string) {
    const checkmark = nc.nyxbgreen('✓')
-   consolji.info(`${checkmark} ${successText}`)
+   consolji.log(nc.nyxbpurple(`${checkmark} ${successText}`))
 }
 
 export function logConclusion() {
+   console.log('\n')
    const react = nc.nyxbcyan('')
    const text = nc.nyxbgreen('Component created!')
    consolji.log(nc.nyxbgreen(`${react} ${text}`))
