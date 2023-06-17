@@ -21,6 +21,10 @@ This project uses an opinionated file structure discussed in this blog post: [**
 
 <br />
 
+## Video demo
+
+
+
 ## 🌟 Features
 
 - Simple CLI interface for adding React components.
