@@ -163,5 +163,5 @@ This has only been tested in macOS. I think it'd work fine in linux, but I haven
 [npm-downloads-href]: https://npmjs.com/package/get-component
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/get-component?style=flat&colorA=18181B&colorB=14F195
 [bundle-href]: https://bundlephobia.com/result?p=get-component
-[license-src]: https://img.shields.io/github/license/nyxblabs/get-component.svg?style=flat&colorA=18181B&colorB=14F195
-[license-href]: https://github.com/nyxblabs/get-component/blob/main/LICENSE
+[license-src]: https://img.shields.io/github/license/nyxb/get-component.svg?style=flat&colorA=18181B&colorB=14F195
+[license-href]: https://github.com/nyxb/get-component/blob/main/LICENSE
