@@ -58,24 +58,29 @@ export function logTemplateChoice(isStyle: boolean) {
 // Emit a message confirming the creation of the component
 
 export function logIntro({ name, dir, isStyle }: ComponentInfo & { isStyle: boolean }) {
+   console.log('\n')
    consolji.log(`${nc.nyxbcyan('')} Creating the ${nc.nyxbfox(name)} component ${nc.nyxbcyan('')}`)
-   console.log('/n')
+   console.log('\n')
 
    const templateString = isStyle
-      ? 'with style-components'
-      : 'normal'
+      ? nc.bold(nc.nyxbfox('with style-components'))
+      : nc.bold(nc.nyxbfox('normal'))
 
-   const langString = nc.bold(nc.nyxbblue('TypeScript'))
+   const langString = nc.bold(nc.nyxbfox('TypeScript'))
 
-   const pathString = nc.bold(nc.nyxbblue(dir))
-   consolji.log(`Directory:  ${pathString}`)
-   consolji.log(`Version:    ${templateString}`)
-   consolji.log(`Language:   ${langString}`)
+   const pathString = nc.bold(nc.nyxbfox(dir))
+   const directory = nyxbGradient('Directory:')
+   const version = nyxbGradient('Version:')
+   const language = nyxbGradient('Language:')
+   consolji.log(`${directory}  ${pathString}`)
+   consolji.log(`${version}    ${templateString}`)
+   consolji.log(`${language}   ${langString}`)
    consolji.log(
       nc.gray(
          '=========================================',
       ),
    )
+   console.log('\n')
 }
 
 export function logItemCompletion(successText: string) {
