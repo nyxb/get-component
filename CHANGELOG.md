@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.1.2
+
+[compare changes](https://github.com/nyxb/get-component/compare/v0.1.1...v0.1.2)
+
+
+### 💅 Refactors
+
+  - **helpers.ts): comment out unused logTemplateChoice function 🔨 refactor(helpers.ts): simplify logIntro function by removing unnecessary bold and gradient formatting 🐛 fix(index.ts:** Handle promise rejection in mkDirPromise function call and log error message ([80c9c26](https://github.com/nyxb/get-component/commit/80c9c26))
+
+### ❤️  Contributors
+
+- Nyxb <contact@nyxb.xyz>
+
 ## v0.1.1
 
 
