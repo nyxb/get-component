@@ -49,12 +49,12 @@ const [componentName] = program.args
 
 const options = program.opts()
 
-const targetDir = options.path || options.dir
+const targetDir = options.hasOwnProperty('path') ? options.path : (options.hasOwnProperty('dir') ? options.dir : config.dir)
 
 const templatePath = options.style ? './templates/style.ts.js' : './templates/ts.js'
 
 // Define component directory and file paths
-const componentDir = options.newdir ? path.resolve(`${options.dir || options.path}/${componentName}`) : path.resolve(options.dir || options.path)
+const componentDir = options.newdir ? path.join(targetDir, componentName) : targetDir
 const filePath = `${componentDir}/${componentName}.tsx`
 const indexPath = `${componentDir}/index.ts`
 
