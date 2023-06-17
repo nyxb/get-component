@@ -68,7 +68,6 @@ logIntro({
    name: componentName,
    dir: componentDir,
    lang: 'ts',
-   isNewDir: options.newdir,
    isStyle: options.style,
 })
 

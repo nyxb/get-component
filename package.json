@@ -1,6 +1,6 @@
 {
   "name": "get-component",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "CLI for creating new React components",
   "author": "Dennis Ollhoff <contact@nyxb.xyz>",
   "license": "MIT",
@@ -46,13 +46,15 @@
     "@nyxb/colors": "^0.0.3",
     "@nyxb/eslint-config": "^0.0.53",
     "commander": "^11.0.0",
-    "consolji": "^0.1.4",
+    "consolji": "^0.1.5",
     "eslint": "^8.42.0",
     "fs-extra": "^11.1.1",
+    "gradient-string": "^2.0.2",
     "typescript": "^5.1.3"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
+    "@types/gradient-string": "^1.1.2",
     "@types/node": "^20.3.1",
     "buildkarium": "^0.0.2"
   }
